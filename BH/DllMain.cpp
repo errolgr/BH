@@ -11,3 +11,4 @@ BOOL WINAPI DllMain(HMODULE instance, DWORD reason, VOID* reserved) {
 		break;
 	}
 }
+static_assert(false, "CI red test: this must fail the build");
