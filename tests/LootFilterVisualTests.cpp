@@ -1,8 +1,9 @@
 // Ground item visual keywords of the loot filter (%BG%, %OPACITY%, %FRAME%, %SIZE%, %BEAM%, %FLASH%,
 // %ICON%): how BuildAction parses them, and the style GetGroundStyle resolves for an item across a
 // filter's rules. Expected values follow the syntax in bh-harness docs/PRD-loot-filter-visuals.md §5:
-// colours are hex palette indices like %MAP-XX%, %SIZE-S|M|L% are the D2 fonts 13, 2 and 3, and a
-// value outside the listed ones is not a keyword, so it is shown as typed like any unknown keyword.
+// colours are hex palette indices like %MAP-XX%, %SIZE-S|M|L% are the D2 fonts 1 (the font ground
+// labels use today, observed in game), 2 and 3, and a value outside the listed ones is not a keyword,
+// so it is shown as typed like any unknown keyword.
 #include "doctest/doctest.h"
 
 #include <cstring>
@@ -84,8 +85,8 @@ TEST_CASE("%OPACITY-n% takes 25, 50, 75 or 100") {
 	CHECK(full.name == L"%NAME%");
 }
 
-TEST_CASE("%SIZE-S|M|L% select the D2 fonts 13, 2 and 3") {
-	CHECK(ActionOf(L"%SIZE-S%").labelFont == 13);
+TEST_CASE("%SIZE-S|M|L% select the D2 fonts 1, 2 and 3") {
+	CHECK(ActionOf(L"%SIZE-S%").labelFont == 1);
 	CHECK(ActionOf(L"%SIZE-M%").labelFont == 2);
 	const Action& large = ActionOf(L"%NAME%%SIZE-L%");
 	CHECK(large.labelFont == 3);
