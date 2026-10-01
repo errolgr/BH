@@ -87,6 +87,7 @@
     <ClCompile Include="..\BH\Modules\ChatColor\ChatColor.cpp" />
     <ClCompile Include="..\BH\Modules\Gamefilter\Gamefilter.cpp" />
     <ClCompile Include="..\BH\Modules\Gamefilter\ParsedFilterString.cpp" />
+    <ClCompile Include="..\BH\Modules\Item\GroundLabels.cpp" />
     <ClCompile Include="..\BH\Modules\Item\ItemDisplay.cpp" />
     <ClCompile Include="..\BH\Modules\MapNotify\MapNotify.cpp" />
     <ClCompile Include="..\BH\Modules\Party\Party.cpp" />
@@ -125,6 +126,7 @@
     <ClCompile Include="D2HelpersTests.cpp" />
     <ClCompile Include="FormulaTests.cpp" />
     <ClCompile Include="GameFilterTests.cpp" />
+    <ClCompile Include="GroundLabelsTests.cpp" />
     <ClCompile Include="ItemConditionTests.cpp" />
     <ClCompile Include="ItemStatConditionTests.cpp" />
     <ClCompile Include="JSONObjectTests.cpp" />
