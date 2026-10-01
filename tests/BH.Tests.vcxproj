@@ -131,6 +131,7 @@
     <ClCompile Include="KeyhookTests.cpp" />
     <ClCompile Include="LootFilterActionTests.cpp" />
     <ClCompile Include="LootFilterRulesTests.cpp" />
+    <ClCompile Include="LootFilterVisualTests.cpp" />
     <ClCompile Include="MapNotifyTests.cpp" />
     <ClCompile Include="MustacheTests.cpp" />
     <ClCompile Include="PartyTests.cpp" />
