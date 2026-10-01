@@ -37,6 +37,7 @@ void ResetCaches() {
 	item_desc_cache.ResetCache();
 	item_name_cache.ResetCache();
 	map_action_cache.ResetCache();
+	ground_style_cache.ResetCache();
 }
 
 // Module.cpp / ModuleManager.cpp / Item.cpp: just enough of the module system for
