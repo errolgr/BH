@@ -89,7 +89,9 @@
     <ClCompile Include="..\BH\Modules\Gamefilter\ParsedFilterString.cpp" />
     <ClCompile Include="..\BH\Modules\Item\GroundLabels.cpp" />
     <ClCompile Include="..\BH\Modules\Item\ItemDisplay.cpp" />
+    <ClCompile Include="..\BH\Modules\Item\ItemBeams.cpp" />
     <ClCompile Include="..\BH\Modules\MapNotify\MapNotify.cpp" />
+    <ClCompile Include="..\BH\Modules\MapNotify\MarkerShapes.cpp" />
     <ClCompile Include="..\BH\Modules\Party\Party.cpp" />
     <ClCompile Include="..\BH\Modules\ScreenInfo\ScreenInfo.cpp" />
     <ClCompile Include="..\BH\Mustache.cpp" />
@@ -127,6 +129,7 @@
     <ClCompile Include="FormulaTests.cpp" />
     <ClCompile Include="GameFilterTests.cpp" />
     <ClCompile Include="GroundLabelsTests.cpp" />
+    <ClCompile Include="ItemBeamsTests.cpp" />
     <ClCompile Include="ItemConditionTests.cpp" />
     <ClCompile Include="ItemStatConditionTests.cpp" />
     <ClCompile Include="JSONObjectTests.cpp" />
@@ -135,6 +138,7 @@
     <ClCompile Include="LootFilterRulesTests.cpp" />
     <ClCompile Include="LootFilterVisualTests.cpp" />
     <ClCompile Include="MapNotifyTests.cpp" />
+    <ClCompile Include="MarkerShapesTests.cpp" />
     <ClCompile Include="MustacheTests.cpp" />
     <ClCompile Include="PartyTests.cpp" />
     <ClCompile Include="ScreenInfoTests.cpp" />
