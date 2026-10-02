@@ -173,4 +173,65 @@ TEST_SUITE("Item beams") {
 		SelectNearest(c, kMaxBeams);
 		CHECK(c.size() == 2);
 	}
+
+	TEST_CASE("with no panel open the whole screen width is visible, at any resolution") {
+		const ScreenSpan s800 = VisibleSpan(0, 800);
+		CHECK(s800.x0 == 0);
+		CHECK(s800.x1 == 800);
+		const ScreenSpan s1068 = VisibleSpan(0, 1068);
+		CHECK(s1068.x0 == 0);
+		CHECK(s1068.x1 == 1068);
+	}
+
+	TEST_CASE("a left panel (character, quests, waypoints...) hides the left half of the screen") {
+		const ScreenSpan s = VisibleSpan(2, 1068);
+		CHECK(s.x0 == 534);
+		CHECK(s.x1 == 1068);
+		CHECK(VisibleSpan(2, 800).x0 == 400);
+	}
+
+	TEST_CASE("a right panel (inventory, skills...) hides the right half of the screen") {
+		const ScreenSpan s = VisibleSpan(1, 1068);
+		CHECK(s.x0 == 0);
+		CHECK(s.x1 == 534);
+	}
+
+	TEST_CASE("with both panels open nothing is visible") {
+		const ScreenSpan s = VisibleSpan(3, 1068);
+		CHECK(s.x0 >= s.x1);
+		long x0 = 100, x1 = 110;
+		CHECK_FALSE(ClipToSpan(s, &x0, &x1));
+	}
+
+	TEST_CASE("a beam rectangle crossing the panel edge is cut at the edge, one wholly behind it is dropped") {
+		const ScreenSpan left = VisibleSpan(2, 1068);  // visible: 534 <= x < 1068
+		long x0 = 525, x1 = 540;
+		REQUIRE(ClipToSpan(left, &x0, &x1));
+		CHECK(x0 == 534);
+		CHECK(x1 == 540);
+		x0 = 500; x1 = 534;
+		CHECK_FALSE(ClipToSpan(left, &x0, &x1));
+		const ScreenSpan right = VisibleSpan(1, 1068);  // visible: 0 <= x < 534
+		x0 = 530; x1 = 545;
+		REQUIRE(ClipToSpan(right, &x0, &x1));
+		CHECK(x0 == 530);
+		CHECK(x1 == 534);
+		x0 = 534; x1 = 540;
+		CHECK_FALSE(ClipToSpan(right, &x0, &x1));
+	}
+
+	TEST_CASE("rectangles inside the visible area are not changed; the screen edges clip too") {
+		const ScreenSpan all = VisibleSpan(0, 1068);
+		long x0 = 200, x1 = 215;
+		REQUIRE(ClipToSpan(all, &x0, &x1));
+		CHECK(x0 == 200);
+		CHECK(x1 == 215);
+		x0 = -6; x1 = 4;
+		REQUIRE(ClipToSpan(all, &x0, &x1));
+		CHECK(x0 == 0);
+		CHECK(x1 == 4);
+		x0 = 1060; x1 = 1075;
+		REQUIRE(ClipToSpan(all, &x0, &x1));
+		CHECK(x1 == 1068);
+	}
 }
